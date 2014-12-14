@@ -1,0 +1,81 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="$close()" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Add a new guest</h4>
+    </div>
+    <div class="modal-body">
+        <div ng-form="guestForm" class="form-horizontal" ng-cloak>
+            <div class="form-group row"
+                 ng-class="{ 'has-error' : guestForm.nameInvited.$invalid && !guestForm.nameInvited.$pristine }">
+                <label for="nameInvited" class="col-xs-12 col-sm-3 control-label">Guest</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input type="text" class="form-control" name="nameInvited" placeholder="Guest Name(s)" id="nameInvited" ng-model="formData.nameInvited" required="true">
+                    <p ng-show="!guestForm.nameInvited.$pristine && guestForm.nameInvited.$error.required"
+                       class="help-block required-error">The name is required and cannot be empty.</p>
+                </div>
+            </div>
+
+            <div class="form-group row"
+                 ng-class="{ 'has-error' : guestForm.address.$invalid && !guestForm.address.$pristine }">
+                <label for="address" class="col-xs-12 col-sm-3 control-label">Address</label>
+                <div class="col-xs-12 col-sm-8">
+                    <textarea class="form-control" rows="3" name="address" placeholder="Guest's Address" id="address" ng-model="formData.address" required="true"></textarea>
+                    <p ng-show="!guestForm.address.$pristine && guestForm.address.$error.required"
+                       class="help-block required-error">The name is required and cannot be empty.</p>
+                </div>
+            </div>
+
+            <div class="form-group row"
+                 ng-class="{ 'has-error' : guestForm.numberInvited.$invalid && !guestForm.numberInvited.$pristine }">
+                <label for="numberInvited" class="col-xs-12 col-sm-3 control-label">Number Invited</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input type="number" min="1" class="form-control" name="numberInvited" placeholder="Number Invited" id="numberInvited" ng-model="formData.numberInvited" required="true">
+                    <p ng-show="!guestForm.numberInvited.$pristine && guestForm.numberInvited.$error.required"
+                       class="help-block required-error">The number is required and cannot be empty.</p>
+                    <p ng-show="!guestForm.numberInvited.$pristine && guestForm.numberInvited.$error.number"
+                       class="help-block required-error">Must be a valid number</p>
+                </div>
+            </div>
+
+            <div class="form-group row"
+                 ng-class="{ 'has-error' : guestForm.group.$invalid && !guestForm.group.$pristine }">
+                <label for="group" class="col-xs-12 col-sm-3 control-label">Side</label>
+                <div class="col-xs-12 col-sm-8">
+                    <select class="form-control" name="group" id="group" ng-model="formData.group" required="true">
+                        <option value="Liz">Liz</option>
+                        <option value="Michael">Michael</option>
+                    </select>
+                    <p ng-show="!guestForm.group.$pristine && guestForm.group.$error.required"
+                       class="help-block required-error">The name is required and cannot be empty.</p>
+                </div>
+            </div>
+
+            <div class="form-group row"
+                 ng-class="{ 'has-error' : guestForm.rsvpCode.$invalid && !guestForm.rsvpCode.$pristine }">
+                <label for="rsvpCode" class="col-xs-12 col-sm-3 control-label">RSVP Code</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input type="text" class="form-control" name="rsvpCode" id="rsvpCode" placeholder="RSVP Code" ng-model="formData.rsvpCode" required="true">
+                    <p ng-show="!guestForm.rsvpCode.$pristine && guestForm.rsvpCode.$error.required"
+                       class="help-block required-error">The rsvp code is required and cannot be empty.</p>
+                </div>
+            </div>
+
+            <div class="form-group row"
+                 ng-class="{ 'has-error' : guestForm.guestAllowed.$invalid && !guestForm.guestAllowed.$pristine }">
+                <div class="checkbox col-xs-12 col-sm-8 col-sm-offset-3">
+                    <label>
+                        <input type="checkbox" name="guestAllowed" id="guestAllowed" ng-model="formData.guestAllowed">
+                        Guest Allowed?
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit"
+                ng-disabled="guestForm.$invalid || loading"
+                class="submit btn btn-primary"
+                ng-click="update()"
+                >Add</button>
+    </div>
+</div>

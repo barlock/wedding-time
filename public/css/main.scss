@@ -1,2 +1,14 @@
+// Mixins
+@import "mixins/mixins";
+
 // Bootstrap
 @import "../components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+
+// Overrides
+@import "partials/bootstrap-overrides";
+
+// Styles
+@import "partials/angular";
+@import "partials/layout";
+@import "partials/navbar";
+@import "partials/front-banner";

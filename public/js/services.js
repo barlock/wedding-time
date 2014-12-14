@@ -1,11 +1,13 @@
 'use strict';
 
 define(['angular'], function (angular) {
-	
-	/* Services */
-
-	// Demonstrate how to register services
-	// In this case it is a simple value service.
 	angular.module('weddingTime.services', [])
-		.value('version', '0.1');
+        .factory("guests", function ($http) {
+            return function () {
+                return $http.get("/api/v1/guests")
+                    .error(function () {
+                        return { data: [] };
+                    });
+            };
+        })
 });

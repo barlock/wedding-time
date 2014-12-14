@@ -1,4 +1,8 @@
 {
+    "databaseConfig": {
+        "host": "localhost",
+        "database": "wedding-time"
+    },
     "express": {
         "view cache": false,
         "view engine": "hbs"

@@ -2,19 +2,18 @@
 
 requirejs.config({
     paths: {
-        "angular": "../components/angular/angular.min",
-        "angular-bootstrap": "../components/angular-bootstrap/ui-bootstrap-tpls.min",
-        "bootstrap": "../components/bootstrap/dist/js/bootstrap.min",
-        "jquery": "../components/jquery/dist/jquery.min"
+        "angular":           "/components/angular/angular.min",
+        "angular-bootstrap": "/components/angular-bootstrap/ui-bootstrap-tpls.min",
+        "angular-cookies":   "/components/angular-cookies/angular-cookies.min",
+        "bootstrap":         "/components/bootstrap/dist/js/bootstrap.min",
+        "jquery":            "/components/jquery/dist/jquery.min"
     },
     shim: {
-        "angular-bootstrap": {
-            deps: ["angular"],
-            exports: "angular"
-        },
         "angular": {
             exports: "angular"
         },
+        "angular-bootstrap": ["angular"],
+        "angular-cookies": ["angular"],
         "bootstrap": {
             deps: ["jquery"]
         }

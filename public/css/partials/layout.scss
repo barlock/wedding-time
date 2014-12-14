@@ -1,0 +1,9 @@
+.center-horizontal {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.top.container {
+    padding-top: $navbar-height;
+}

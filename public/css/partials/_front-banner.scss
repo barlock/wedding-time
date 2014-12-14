@@ -1,0 +1,30 @@
+.full-backdrop {
+    position: absolute;
+    background: {
+        image: url("/images/background.jpg");
+        repeat: no-repeat;
+        size: cover;
+        position: center;
+    }
+
+    min-height: 100vh;
+    min-width:   100vw;
+    height: auto;
+    width: auto;
+}
+
+.banner-overlay {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background: {
+        color: transparentize($lavender4, .5);
+    }
+}
+
+.front-banner {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    color: $lavender0;
+}

@@ -9,14 +9,18 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "kraken-js": "^1.0.1",
-    "kraken-devtools": "^1.0.0",
     "engine-munger": "^0.2.0",
     "express": "^4.3.0",
-    "requirejs": "^2.1.15",
+    "express-handlebars": "^1.1.0",
+    "kraken-js": "^1.0.1",
+    "kraken-devtools": "^1.0.0",
     "localizr": "^0.1.0",
+    "mongoose": "^3.8.19",
     "node-sass": "^0.8.6",
-    "express-handlebars": "^1.1.0"
+    "passport": "^0.2.1",
+    "passport-http": "^0.2.2",
+    "requirejs": "^2.1.15",
+    "underscore": "^1.7.0"
   },
   "devDependencies": {
     "mocha": "^1.18.0",

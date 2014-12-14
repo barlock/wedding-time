@@ -6,14 +6,23 @@ define([
     "services",
     "directives",
     "controllers",
-    "bootstrap"
+    "bootstrap",
+    "angular-bootstrap",
+    "angular-cookies",
 ], function (angular) {
     var app = angular.module("weddingTime", [
         "weddingTime.filters",
         "weddingTime.services",
         "weddingTime.directives",
-        "weddingTime.controllers"
+        "weddingTime.controllers",
+        "ui.bootstrap",
+        "ngCookies"
     ]);
+
+    app.run( function ( $http, $cookies ){
+        // For CSRF token compatibility with Django
+        $http.defaults.headers.common['X-CSRF-Token'] = $cookies["XSRF-TOKEN"];
+    });
 
     app.init = function() {
         angular.bootstrap(document, ["weddingTime"]);

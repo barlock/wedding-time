@@ -1,10 +1,12 @@
 "use strict";
 
-var express = require("express"),
+var basicStrategy = require("./lib/basic-strategy"),
+    db = require("./lib/database"),
+    express = require("express"),
     exphbs = require("express-handlebars"),
     http = require("http"),
-    kraken = require("kraken-js");
-
+    kraken = require("kraken-js"),
+    passport = require("passport");
 
 var options, app, server, hbs;
 
@@ -18,6 +20,7 @@ options = {
          * Add any additional config setup or overrides here. `config` is an initialized
          * `confit` (https://github.com/krakenjs/confit/) configuration object.
          */
+        db.config(config.get("databaseConfig"));
         next(null, config);
     }
 };
@@ -30,6 +33,19 @@ hbs = exphbs.create({
 app = module.exports = express();
 
 app.use(kraken(options));
+
+passport.use(basicStrategy);
+
+passport.serializeUser(function(user, done) {
+    done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+    done(null, user);
+});
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.engine("hbs", hbs.engine);
 
