@@ -1,7 +1,6 @@
 "use strict";
 
-var express = require("express"),
-    passport = require("passport");
+var passport = require("passport");
 
 module.exports = function (router) {
 

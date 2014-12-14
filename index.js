@@ -54,7 +54,6 @@ app.on("start", function () {
     console.log("Environment: %s", app.kraken.get('env:env'));
 });
 
-
 /*
  * Create and start HTTP server.
  */
