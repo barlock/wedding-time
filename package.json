@@ -44,6 +44,6 @@
     "task": "grunt"
   },
   "scripts": {
-      "postinstall": "bower install --allow-root",
+      "postinstall": "bower install --allow-root"
   }
 }
