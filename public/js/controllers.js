@@ -3,7 +3,7 @@
 define(['angular', 'services'], function (angular) {
 
 	/* Controllers */
-	
+
 	return angular.module('weddingTime.controllers', ['weddingTime.services'])
 		// Sample controller where service is being used
 		.controller('GuestListController',
@@ -19,7 +19,8 @@ define(['angular', 'services'], function (angular) {
                     var alerts = [];
 
                     angular.forEach($scope.guests, function(guest) {
-                        if(guest.rsvpCode === guestObj.rsvpCode) {
+                        if(guestObj.id !== guest.id &&
+                            guest.rsvpCode === guestObj.rsvpCode) {
                             alerts.push({
                                 msg: "RSVP Code must be unique",
                                 type: "danger"
@@ -38,8 +39,8 @@ define(['angular', 'services'], function (angular) {
                             .error(function(data) {
                                 $scope.alerts.push({msg: data, type: "danger"});
                             })
-                            .success(function(id) {
-                                newGuest._id = id;
+                            .success(function(data) {
+                                newGuest._id = data.id;
                                 $scope.guests.push(newGuest);
                             });
                     } else {
@@ -70,7 +71,8 @@ define(['angular', 'services'], function (angular) {
                     }
                 };
 
-                $scope.deleteGuest = function(id) {
+                $scope.deleteGuest = function(guest) {
+                    var id = guest._id;
                     if(id) {
                         $http.delete("/api/v1/guests/" + id)
                             .error(function(data) {

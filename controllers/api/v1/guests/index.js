@@ -46,7 +46,7 @@ module.exports = function (router) {
                 console.log('save error', err);
                 res.send(500, err);
             } else {
-                res.send(200, guest._id);
+                res.json(200, {id: guest._id });
             }
         });
     });
