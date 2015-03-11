@@ -2,19 +2,17 @@
 
 define([
     "angular",
+    "namespace",
+    "./guests/namespace",
+    "./guests/module.require",
     "filters",
-    "services",
-    "directives",
-    "controllers",
     "bootstrap",
     "angular-bootstrap",
-    "angular-cookies",
-], function (angular) {
-    var app = angular.module("weddingTime", [
+    "angular-cookies"
+], function (angular, namespace, guestsNamespace) {
+    var app = angular.module(namespace, [
+        guestsNamespace,
         "weddingTime.filters",
-        "weddingTime.services",
-        "weddingTime.directives",
-        "weddingTime.controllers",
         "ui.bootstrap",
         "ngCookies"
     ]);
@@ -25,7 +23,7 @@ define([
     });
 
     app.init = function() {
-        angular.bootstrap(document, ["weddingTime"]);
+        angular.bootstrap(document, [namespace]);
     };
 
     return app;

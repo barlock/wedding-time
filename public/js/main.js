@@ -5,6 +5,7 @@ requirejs.config({
         "angular":           "/components/angular/angular.min",
         "angular-bootstrap": "/components/angular-bootstrap/ui-bootstrap-tpls.min",
         "angular-cookies":   "/components/angular-cookies/angular-cookies.min",
+        "angular-route":     "/components/angular-route/angular-route.min",
         "bootstrap":         "/components/bootstrap/dist/js/bootstrap.min",
         "jquery":            "/components/jquery/dist/jquery.min"
     },
@@ -14,6 +15,7 @@ requirejs.config({
         },
         "angular-bootstrap": ["angular"],
         "angular-cookies": ["angular"],
+        "angular-route": ["angular"],
         "bootstrap": {
             deps: ["jquery"]
         }
