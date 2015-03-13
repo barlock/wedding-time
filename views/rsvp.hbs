@@ -12,7 +12,7 @@
                 </div>
             </div>
         </div>
-        <a href="mailto:mbarlock@gmail.com,edurham215@gmail.com?Subject=Wedding%20RSVP" ng-show="attempts" ng-cloak>Having Trouble? Shoot us an email.</a>
+        <a href="mailto:?Subject=Wedding%20RSVP" ng-show="attempts" ng-cloak>Having Trouble? Shoot us an email.</a>
     </div>
 
     <div ng-show="guest.invitationName" ng-cloak>
@@ -21,7 +21,7 @@
                 <label class="control-label">You're Invited! Check everyone who plans to attend.</label>
                 <div class="checkbox">
                     <div ng-repeat="name in guest.namesInvited">
-                        <label><input type="checkbox" ng-model="namesComing[$index]">\{{name}}</label>
+                        <label><input type="checkbox" ng-model="attending[name]">\{{name}}</label>
                     </div>
                 </div>
             </div>
