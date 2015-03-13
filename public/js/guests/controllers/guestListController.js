@@ -6,7 +6,7 @@ define([
 
     var name = namespace + ".GuestListController";
 
-    module.controller(name, ['$scope', '$http', namespace + '.GuestServices', function ($scope, $http, GuestServices) {
+    module.controller(name, ['$scope', namespace + '.GuestServices', function ($scope, GuestServices) {
         $scope.guests = [];
         $scope.alerts = [];
 
@@ -34,14 +34,9 @@ define([
             var alerts = validateGuest(newGuest);
 
             if (newGuest && alerts.length === 0) {
-                $http.post("/api/v1/guests", newGuest)
-                    .error(function (data) {
-                        $scope.alerts.push({msg: data, type: "danger"});
-                    })
-                    .success(function (data) {
-                        newGuest._id = data.id;
-                        $scope.guests.push(newGuest);
-                    });
+                GuestServices.save(newGuest, function() {
+                    $scope.guests.push(newGuest);
+                });
             } else {
                 $scope.alerts = $scope.alerts.concat(alerts);
             }
@@ -49,46 +44,36 @@ define([
 
         $scope.updateGuest = function (updatedGuest) {
             var alerts = validateGuest(updatedGuest),
-                id;
+                guestId;
 
             if (updatedGuest && alerts.length === 0) {
-                id = updatedGuest._id;
+                guestId = updatedGuest._id;
 
-                $http.put("/api/v1/guests/" + id, updatedGuest)
-                    .error(function (data) {
-                        $scope.alerts.push({msg: data, type: "danger"});
-                    })
-                    .success(function () {
-                        angular.forEach($scope.guests, function (guest, index) {
-                            if (guest._id === id) {
-                                $scope.guests[index] = updatedGuest;
-                            }
-                        });
+                GuestServices.update({ id:guestId }, updatedGuest, function() {
+                    angular.forEach($scope.guests, function (guest, index) {
+                        if (guest._id === guestId) {
+                            $scope.guests[index] = updatedGuest;
+                        }
                     });
+                });
             } else {
                 $scope.alerts = $scope.alerts.concat(alerts);
             }
         };
 
         $scope.deleteGuest = function (guest) {
-            var id = guest._id;
-            if (id) {
-                $http.delete("/api/v1/guests/" + id)
-                    .error(function (data) {
-                        $scope.alerts.push({msg: data, type: "danger"});
-                    })
-                    .success(function () {
-                        angular.forEach($scope.guests, function (guest, index) {
-                            if (guest._id === id) {
-                                $scope.guests.splice(index, 1);
-                            }
-                        });
+            var guestId = guest._id;
+            if (guestId) {
+                GuestServices.delete({ id:guestId }, function() {
+                    angular.forEach($scope.guests, function (guest, index) {
+                        if (guest._id === guestId) {
+                            $scope.guests.splice(index, 1);
+                        }
                     });
+                });
             }
         };
 
-        GuestServices().then(function (result) {
-            $scope.guests = result.data;
-        });
+        $scope.guests = GuestServices.query();
     }])
 });

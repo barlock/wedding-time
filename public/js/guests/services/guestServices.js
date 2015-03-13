@@ -6,12 +6,11 @@ define([
 
     var name = namespace + ".GuestServices";
 
-    module.factory(name, ['$http', function ($http) {
-        return function () {
-            return $http.get("/api/v1/guests")
-                .error(function () {
-                    return {data: []};
-                });
-        };
+    module.factory(name, ['$resource', function ($resource) {
+        return $resource("/api/v1/guests/:id", {}, {
+            update: {
+                method: 'PUT'
+            }
+        });
     }])
 });

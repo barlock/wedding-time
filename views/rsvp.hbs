@@ -1,1 +1,52 @@
-<h2>RSVP</h2>
+<div ng-controller="weddingTime.guests.RsvpController">
+    <div class="jumbotron" ng-hide="guest.invitationName" ng-show="attempts">
+        <h1>Hello! Got an RSVP code?</h1>
+        <p>Check your invitation for your unique RSVP code and enter it below.</p>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="ex: farmhouse" ng-model="rsvpCode">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" ng-click="validate(rsvpCode)">Go!</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <a href="mailto:mbarlock@gmail.com,edurham215@gmail.com?Subject=Wedding%20RSVP" ng-show="attempts" ng-cloak>Having Trouble? Shoot us an email.</a>
+    </div>
+
+    <div ng-show="guest.invitationName" ng-cloak>
+        <form name="rsvpForm" role="form" class="form">
+            <div class="form-group">
+                <label class="control-label">You're Invited! Check everyone who plans to attend.</label>
+                <div class="checkbox">
+                    <div ng-repeat="name in guest.namesInvited">
+                        <label><input type="checkbox" ng-model="namesComing[$index]">\{{name}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" ng-show="guest.guestAllowed">
+                <label for="guest" class="control-label">Guest? If so, please provide his/her name.</label>
+                <div class="input-group" id="guest">
+                    <span class="input-group-addon">
+                        <input type="checkbox" ng-model="guest.guestComing">
+                    </span>
+                    <input type="text" class="form-control" ng-model="guest.guestName" ng-disabled="!guest.guestComing">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="message">Message:</label>
+                <textarea id="message" class="form-control" rows="5" ng-model="guest.message"></textarea>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" ng-click="submit()">Submit</button>
+            </div>
+        </form>
+
+        <a href="#" ng-click="giveUp()">Not you? Re-enter your code.</a>
+    </div>
+</div>
+

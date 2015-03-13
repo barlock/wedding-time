@@ -1,5 +1,6 @@
 define([
-    "./guestListController"
+    "./guestListController",
+    "./rsvpController"
 ], function () {
    "use strict";
 });

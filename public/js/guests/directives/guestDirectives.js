@@ -22,7 +22,7 @@ define([
             controller: function ($scope, $modal) {
                 /* jshint +W072 */
                 var modalInstance,
-                    formData = $scope.guest || {};
+                    formData = $scope.guest || { };
 
                 $scope.alerts = [];
 
