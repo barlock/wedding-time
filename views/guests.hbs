@@ -1,4 +1,4 @@
-<div class="top container" ng-controller="weddingTime.guests.GuestListController">
+<div ng-controller="weddingTime.guests.GuestListController">
     <div class="row">
         <div class="col-xs-12">
             <h2>The Guest List</h2>
@@ -11,21 +11,23 @@
         <thead>
             <tr>
                 <th class="col-xs-3">Name</th>
-                <th class="col-xs-2"># Invited</th>
+                <th class="col-xs-3">Guests</th>
+                <th class="col-xs-1"># Invited</th>
                 <th class="col-xs-1">Side</th>
                 <th class="col-xs-1">Guest?</th>
-                <th class="col-xs-2">RSVP Code</th>
+                <th class="col-xs-1">RSVP Code</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-cloak ng-repeat="guest in guests">
-                <td class="col-xs-3">\{{guest.nameInvited}}</td>
-                <td class="col-xs-2">\{{guest.numberInvited}}</td>
+                <td class="col-xs-3">\{{guest.invitationName}}</td>
+                <td class="col-xs-3">\{{guest.namesInvited.join(", ")}}</td>
+                <td class="col-xs-1">\{{guest.numberInvited}}</td>
                 <td class="col-xs-1">\{{guest.group}}</td>
                 <td class="col-xs-1" ng-if="guest.guestAllowed">Yes</td>
                 <td class="col-xs-1" ng-if="!guest.guestAllowed">No</td>
-                <td class="col-xs-2">\{{guest.rsvpCode}}</td>
-                <td class="col-xs-2 text-right">
+                <td class="col-xs-1">\{{guest.rsvpCode}}</td>
+                <td class="col-xs-1 text-right">
                     <button guest-form guest="guest" on-submit="updateGuest" submit-text="Update" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>
                     <button ng-click="deleteGuest(guest)" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span></button>
                 </td>

@@ -8,13 +8,15 @@ define([
     "filters",
     "bootstrap",
     "angular-bootstrap",
-    "angular-cookies"
+    "angular-cookies",
+    "angular-resource"
 ], function (angular, namespace, guestsNamespace) {
     var app = angular.module(namespace, [
         guestsNamespace,
         "weddingTime.filters",
         "ui.bootstrap",
-        "ngCookies"
+        "ngCookies",
+        "ngResource"
     ]);
 
     app.run( function ( $http, $cookies ){

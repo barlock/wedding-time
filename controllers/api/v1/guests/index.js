@@ -22,12 +22,17 @@ module.exports = function (router) {
 
     // Get
     router.get("/", function (req, res) {
-        Guest.find(function (err, guests) {
+        var query = req.query.rsvp ? { rsvpCode: req.query.rsvp } : {};
+        Guest.find(query, function (err, guests) {
             if (err) {
                 console.log(err);
                 res.send(500, err);
-            } {
-                res.json(guests);
+            } else {
+                if(_.isEmpty(query)) {
+                    res.json(guests);
+                } else {
+                    res.json(guests[0]);
+;                }
             }
         });
     });
@@ -46,7 +51,7 @@ module.exports = function (router) {
                 console.log('save error', err);
                 res.send(500, err);
             } else {
-                res.json(200, {id: guest._id });
+                res.status(200).json({id: guest._id });
             }
         });
     });
