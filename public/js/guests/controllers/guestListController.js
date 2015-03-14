@@ -77,15 +77,16 @@ define([
             if (guestId) {
                 GuestServices.delete({ id:guestId }).$promise.then(
                     function success() {
-                    angular.forEach($scope.guests, function (guest, index) {
-                        if (guest._id === guestId) {
-                            $scope.guests.splice(index, 1);
-                        }
+                        angular.forEach($scope.guests, function (guest, index) {
+                            if (guest._id === guestId) {
+                                $scope.guests.splice(index, 1);
+                            }
+                        })
                     },
                     function error(data) {
                         $scope.alerts.push({msg: data, type: "danger"});
-                    });
-                });
+                    }
+                );
             }
         };
 

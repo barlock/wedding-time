@@ -12,24 +12,27 @@ define([
         $scope.attempts = 0;
 
         $scope.validate = function (rsvpCode) {
-           GuestServices.get({ rsvp : rsvpCode }, function(guest) {
-               $scope.guest = angular.copy(guest);
-               angular.forEach(guest.namesInvited, function(name) {
-                   $scope.attending[name] = true;
-               });
-               $scope.attempts++;
-           });
+            GuestServices.get({rsvp: rsvpCode}, function (guest) {
+                $scope.guest = angular.copy(guest);
+                angular.forEach(guest.namesInvited, function (name) {
+                    $scope.attending[name] = true;
+                });
+                $scope.attempts++;
+            });
         };
 
-        $scope.giveUp = function() {
+        $scope.giveUp = function () {
             $scope.guest = {};
         }
 
-        $scope.submit = function() {
+        $scope.submit = function () {
             $scope.guest.rsvpd = true;
-            $scope.guest.namesComing = Object.keys($scope.attending);
-			var guestId = $scope.guest._id;
-            GuestServices.update({ id: guestId }, $scope.guest, function() {
+            angular.forEach($scope.attending, function (value, key) {
+                if (value) {
+                    $scope.guest.namesComing.push(key);
+                }
+            });
+            GuestServices.update({id: $scope.guest._id}, $scope.guest, function () {
                 $window.location.href = "/accommodations";
             });
         }
