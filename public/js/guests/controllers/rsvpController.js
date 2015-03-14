@@ -32,6 +32,7 @@ define([
                     $scope.guest.namesComing.push(key);
                 }
             });
+            $scope.guest.numberComing = $scope.guest.namesComing.length;
             GuestServices.update({id: $scope.guest._id}, $scope.guest, function () {
                 $window.location.href = "/accommodations";
             });
