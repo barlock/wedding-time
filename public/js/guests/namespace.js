@@ -1,4 +1,2 @@
-define(["../namespace"], function(namespace) {
-    "use strict";
-    return namespace + ".guests";
-});
+'use strict';
+module.exports = require('../namespace') + '.guests';

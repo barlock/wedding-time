@@ -1,23 +1,16 @@
 'use strict';
 
-
-module.exports = function sass(grunt) {
-    // Load task
-    grunt.loadNpmTasks('grunt-sass');
-
-    // Options
-    return {
-        build: {
-            options: {
-                outputStyle: 'compressed'
-            },
-            files: [{
-                expand: true,
-                cwd: 'public/css',
-                src: ['**/*.scss'],
-                dest: '.build/css/',
-                ext: '.css'
-            }]
-        }
+module.exports = function (gulp, plugins, dirs) {
+    return function () {
+        var sass = plugins.sass,
+            options = {
+                style: 'compressed',
+                loadPath: [
+                    dirs.node_modules + '/bootstrap-sass/assets/stylesheets'
+                ]
+            };
+        return gulp.src(dirs.css + '/main.scss')
+            .pipe(sass(options).on('error', sass.logError))
+            .pipe(gulp.dest(dirs.build_css));
     };
 };

@@ -1,3 +1,3 @@
-define([], function() {
-    return "weddingTime";
-});
+'use strict';
+
+module.exports = 'weddingTime';

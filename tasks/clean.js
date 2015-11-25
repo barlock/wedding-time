@@ -1,13 +1,8 @@
 'use strict';
+var del = require('del');
 
-
-module.exports = function clean(grunt) {
-	// Load task
-	grunt.loadNpmTasks('grunt-contrib-clean');
-
-	// Options
-	return {
-	    tmp: 'tmp',
-	    build: '.build/templates'
-	};
+module.exports = function (gulp, plugins, dirs) {
+    return function () {
+        return del([dirs.build]);
+    };
 };

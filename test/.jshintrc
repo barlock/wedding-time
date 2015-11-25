@@ -1,0 +1,7 @@
+{
+    "extends": "../.jshintrc",
+    "browser": true,
+    "jasmine": true,
+    "jquery": true,
+    "predef": ["inject", "module", "angular"]
+}
