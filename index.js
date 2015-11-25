@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-var basicStrategy = require("./lib/basic-strategy"),
-    db = require("./lib/database"),
-    express = require("express"),
-    exphbs = require("express-handlebars"),
-    http = require("http"),
-    kraken = require("kraken-js"),
-    passport = require("passport");
+var basicStrategy = require('./lib/basic-strategy'),
+    db = require('./lib/database'),
+    express = require('express'),
+    exphbs = require('express-handlebars'),
+    http = require('http'),
+    kraken = require('kraken-js'),
+    passport = require('passport');
 
 var options, app, server, hbs;
 
@@ -20,14 +20,14 @@ options = {
          * Add any additional config setup or overrides here. `config` is an initialized
          * `confit` (https://github.com/krakenjs/confit/) configuration object.
          */
-        db.config(config.get("databaseConfig"));
+        db.config(config.get('databaseConfig'));
         next(null, config);
     }
 };
 
 hbs = exphbs.create({
-    extname: ".hbs",
-    defaultLayout: "main"
+    extname: '.hbs',
+    defaultLayout: 'main'
 });
 
 app = module.exports = express();
@@ -47,11 +47,11 @@ passport.deserializeUser(function(user, done) {
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.engine("hbs", hbs.engine);
+app.engine('hbs', hbs.engine);
 
-app.on("start", function () {
-    console.log("Application ready to serve requests.");
-    console.log("Environment: %s", app.kraken.get('env:env'));
+app.on('start', function () {
+    console.log('Application ready to serve requests.');
+    console.log('Environment: %s', app.kraken.get('env:env'));
 });
 
 /*
@@ -65,8 +65,8 @@ if (!module.parent) {
      */
     server = http.createServer(app);
     server.listen(process.env.PORT || 8000);
-    server.on("listening", function () {
-        console.log("Server listening on http://localhost:%d", this.address().port);
+    server.on('listening', function () {
+        console.log('Server listening on http://localhost:%d', this.address().port);
     });
 
 }

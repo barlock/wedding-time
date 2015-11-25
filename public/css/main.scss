@@ -2,7 +2,7 @@
 @import "mixins/mixins";
 
 // Bootstrap
-@import "../components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 // Overrides
 @import "partials/bootstrap-overrides";

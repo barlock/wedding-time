@@ -12,17 +12,21 @@
             "enabled": true,
             "priority": 35,
             "module": {
-                "name": "kraken-devtools",
+                "name": "construx",
                 "arguments": [
                     "path:./public",
                     "path:./.build",
-                    {   
+                    {
                         "css": {
-                            "module": "kraken-devtools/plugins/sass",
+                            "module": "construx-sass",
                             "files": "/css/**/*.css"
                         },
+                        "browserify": {
+                            "module": "construx-browserify",
+                            "files": "/js/app.js"
+                        },
                         "copier": {
-                            "module": "kraken-devtools/plugins/copier",
+                            "module": "construx-copier",
                             "files": "**/*"
                         }
                     }
