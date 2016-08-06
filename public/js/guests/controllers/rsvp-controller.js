@@ -8,9 +8,11 @@ function RsvpController($scope, $window, GuestServices) {
     $scope.validate = function (rsvpCode) {
         GuestServices.get({rsvp: rsvpCode}, function (guest) {
             $scope.guest = angular.copy(guest);
+
             angular.forEach(guest.namesInvited, function (name) {
                 $scope.attending[name] = true;
             });
+
             $scope.attempts++;
         });
     };
@@ -20,13 +22,20 @@ function RsvpController($scope, $window, GuestServices) {
     };
 
     $scope.submit = function () {
+        var guestCount = $scope.guest.guestComing ? 1 : 0;
+
         $scope.guest.rsvpd = true;
+
+        $scope.guest.namesComing = [];
+
         angular.forEach($scope.attending, function (value, key) {
             if (value) {
                 $scope.guest.namesComing.push(key);
             }
         });
-        $scope.guest.numberComing = $scope.guest.namesComing.length;
+
+        $scope.guest.numberComing = $scope.guest.namesComing.length + guestCount;
+
         GuestServices.update({id: $scope.guest._id}, $scope.guest, function () {
             $window.location.href = '/accommodations';
         });

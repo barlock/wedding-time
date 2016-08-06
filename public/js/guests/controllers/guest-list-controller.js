@@ -23,9 +23,17 @@ function GuestListController($scope, GuestServices) {
         return alerts;
     }
 
+    function updateNumberInvited(guestObj) {
+        var guestCount = guestObj.guestAllowed ? 1 : 0;
+
+        guestObj.numberInvited = guestCount + guestObj.namesInvited.length;
+    }
+
     $scope.addGuest = function (newGuest) {
         var alerts = validateGuest(newGuest);
         newGuest.rsvpd = false;
+
+        updateNumberInvited(newGuest);
 
         if (newGuest && alerts.length === 0) {
             GuestServices.save(newGuest).$promise.then(
@@ -45,6 +53,8 @@ function GuestListController($scope, GuestServices) {
     $scope.updateGuest = function (updatedGuest) {
         var alerts = validateGuest(updatedGuest),
             guestId;
+
+        updateNumberInvited(updatedGuest);
 
         if (updatedGuest && alerts.length === 0) {
             guestId = updatedGuest._id;
