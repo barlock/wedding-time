@@ -14,9 +14,9 @@
             </li>
         </ul>
         <div class="btn-group col-xs-6 col-sm-3" role="group">
-            <button type="button" class="btn btn-default" ng-click="groupFilter = {}">All</button>
-            <button type="button" class="btn btn-default" ng-click="groupFilter = {group: 'Liz'}">Bride</button>
-            <button type="button" class="btn btn-default" ng-click="groupFilter = {group: 'Michael'}">Groom</button>
+            <button type="button" class="btn btn-secondary" ng-click="groupFilter = {}">All</button>
+            <button type="button" class="btn btn-secondary" ng-click="groupFilter = {group: 'Liz'}">Bride</button>
+            <button type="button" class="btn btn-secondary" ng-click="groupFilter = {group: 'Michael'}">Groom</button>
         </div>
     </div>
 
@@ -47,8 +47,8 @@
             <td class="col-xs-1" ng-if="hasRsvpd()">\{{guest.message}}</td>
             <td class="col-xs-1 text-right" ng-if="!hasRsvpd()">
                 <div class="btn-group" role="group">
-                    <button guest-form guest="guest" on-submit="updateGuest" submit-text="Update" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
-                    <button ng-click="deleteGuest(guest)" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                    <button guest-form guest="guest" on-submit="updateGuest" submit-text="Update" class="btn btn-secondary"><span class="glyphicon glyphicon-pencil"></span></button>
+                    <button ng-click="deleteGuest(guest)" class="btn btn-secondary"><span class="glyphicon glyphicon-trash"></span></button>
                 </div>
             </td>
         </tr>

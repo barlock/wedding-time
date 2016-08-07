@@ -1,0 +1,13 @@
+.hero {
+    &-primary {
+        fill: $teal3;
+    }
+
+    &-secondary {
+        fill: $teal1;
+    }
+
+    &-accent {
+        fill: $tan2;
+    }
+}

@@ -1,0 +1,10 @@
+$band-padding: 6em;
+
+.band {
+    padding-top: $band-padding;
+    padding-bottom: $band-padding;
+
+    &-secondary {
+        background-color: $gray1;
+    }
+}

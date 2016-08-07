@@ -2,13 +2,13 @@
 @import "mixins/mixins";
 
 // Bootstrap
-@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
-// Overrides
-@import "partials/bootstrap-overrides";
+@import "../../node_modules/bootstrap/scss/bootstrap";
 
 // Styles
 @import "partials/angular";
+@import "partials/band";
+@import "partials/hero";
+@import "partials/map-overlay";
 @import "partials/layout";
 @import "partials/navbar";
 @import "partials/front-banner";

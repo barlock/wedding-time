@@ -1,15 +1,8 @@
-.navbar {
-    h1 {
-        color: $lavender0;
-        font-size: 23px;
-        margin: 0;
-    }
+.navbar-brand {
+    line-height: 0;
 
-    .push-left {
-        padding-left: 0;
+    &--logo {
+        height: 1.5em;
+        line-height: 0;
     }
-}
-
-.navbar-default {
-    border: none;
 }

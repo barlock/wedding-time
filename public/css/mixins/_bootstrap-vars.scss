@@ -1,17 +1,73 @@
 // Scaffolding
-$body-bg: $brown0;
-$text-color: $black4;
+$body-bg: $gray0;
+$body-color: $gray3;
 
-// Navbar
-$navbar-default-bg: transparentize($lavender4, .3);
-$navbar-default-color: $lavender0;
-$navbar-default-link-color: $brown0;
-$navbar-default-link-hover-color: $brown1;
-$navbar-default-border: transparent;
-$navbar-default-toggle-border-color: $lavender0;
-$navbar-default-toggle-hover-bg: $lavender0;
-$navbar-default-toggle-icon-bar-bg: $brown1;
+$gray-dark:                 $gray4 !default;
+$gray:                      $gray3 !default;
+$gray-light:                $gray2 !default;
+$gray-lighter:              $gray1 !default;
+$gray-lightest:             $gray0 !default;
 
-// Jumbotron
-$jumbotron-bg: transparentize($lavender4, .3);
-$jumbotron-color: $lavender0;
+$brand-primary:             $tan3 !default;
+$brand-success:             #5cb85c !default;
+$brand-info:                #5bc0de !default;
+$brand-warning:             #f0ad4e !default;
+$brand-danger:              #d9534f !default;
+$brand-inverse:             $gray-dark !default;
+
+$border-radius:          0 !default;
+$border-radius-lg:       0 !default;
+$border-radius-sm:       0 !default;
+
+// Buttons
+//
+// For each of Bootstrap's buttons, define text, background and border color.
+
+$btn-padding-x:                  1rem !default;
+$btn-padding-y:                  .5rem !default;
+$btn-line-height:                1.25 !default;
+$btn-font-weight:                normal !default;
+$btn-box-shadow:                 inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075) !default;
+$btn-active-box-shadow:          inset 0 3px 5px rgba(0,0,0,.125) !default;
+
+$btn-primary-color:              $gray0 !default;
+$btn-primary-bg:                 $brand-primary !default;
+$btn-primary-border:             $btn-primary-bg !default;
+
+$btn-secondary-color:            $body-color !default;
+$btn-secondary-bg:               $gray0 !default;
+$btn-secondary-border:           $body-color !default;
+
+$btn-info-color:                 $gray0 !default;
+$btn-info-bg:                    $brand-info !default;
+$btn-info-border:                $btn-info-bg !default;
+
+$btn-success-color:              $gray0 !default;
+$btn-success-bg:                 $brand-success !default;
+$btn-success-border:             $btn-success-bg !default;
+
+$btn-warning-color:              $gray0 !default;
+$btn-warning-bg:                 $brand-warning !default;
+$btn-warning-border:             $btn-warning-bg !default;
+
+$btn-danger-color:               $gray0 !default;
+$btn-danger-bg:                  $brand-danger !default;
+$btn-danger-border:              $btn-danger-bg !default;
+
+$btn-link-disabled-color:        $gray-light !default;
+
+$btn-padding-x-sm:               .5rem !default;
+$btn-padding-y-sm:               .25rem !default;
+
+$btn-padding-x-lg:               1.5rem !default;
+$btn-padding-y-lg:               .75rem !default;
+
+$btn-block-spacing-y:            .5rem !default;
+$btn-toolbar-margin:             .5rem !default;
+
+// Allows for customizing button radius independently from global border radius
+$btn-border-radius:              $border-radius !default;
+$btn-border-radius-lg:           $border-radius-lg !default;
+$btn-border-radius-sm:           $border-radius-sm !default;
+
+$input-btn-border-width: 2px !default;
