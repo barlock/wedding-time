@@ -115,6 +115,14 @@ function GuestListController($scope, GuestServices) {
         return title === $scope.activeTab;
     };
 
+    $scope.isActiveGroup = function(title) {
+        return title === $scope.groupFilter.group;
+    };
+
+    $scope.setActiveGroup = function(title) {
+        $scope.groupFilter = { group: title };
+    };
+
     $scope.hasRsvpd = function () {
         return $scope.isActive('Attending') || $scope.isActive('Not Attending');
     };

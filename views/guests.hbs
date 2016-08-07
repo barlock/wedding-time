@@ -1,59 +1,101 @@
-<div ng-controller="weddingTime.guests.GuestListController" class="top container">
+<div ng-controller="weddingTime.guests.GuestListController" class="container-fluid">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="guest-list__side-bar col-xs-12 col-md-3 col-lg-3 offset-lg-1">
+            <h5>Side</h5>
+            <ul class="nav nav-pills nav-stacked guest-list__filter" role="tablist" ng-cloak>
+                <li role="presentation"
+                    ng-class="{'nav-link': true, active: !groupFilter.group}"
+                    ng-click="groupFilter = {}">
+                    <a role="button">All</a>
+                </li>
+                <li role="presentation"
+                    ng-class="{'nav-link': true, active: isActiveGroup('Liz')}"
+                    ng-click="setActiveGroup('Liz')">
+                    <a role="button">Bride</a>
+                </li>
+                <li role="presentation"
+                    ng-class="{'nav-link': true, active: isActiveGroup('Michael')}"
+                    ng-click="setActiveGroup('Michael')">
+                    <a role="button">Groom</a>
+                </li>
+            </ul>
+            <h5>Status</h5>
+            <ul class="nav nav-pills nav-stacked guest-list__filter" role="tablist" ng-cloak>
+                <li role="presentation"
+                    ng-repeat="tab in tabs"
+                    ng-class="{'nav-link': true, active: isActive(tab.title)}"
+                    ng-click="setActive(tab)">
+                    <a role="button">
+                        \{{tab.title}} <span class="tag tag-default">\{{(guests|filter:tab.filter).length}}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-12 col-md-9 col-lg-6 offset-lg-1">
             <h2>The Guest List</h2>
-        </div>
-    </div>
 
-    <alert ng-cloak ng-repeat="alert in alerts" type="\{{alert.type}}" close="closeAlert($index)">\{{alert.msg}}</alert>
+            <alert ng-cloak ng-repeat="alert in alerts"
+                   type="\{{alert.type}}"
+                   close="closeAlert($index)">
+                \{{alert.msg}}
+            </alert>
 
-    <div>
-        <ul class="nav nav-pills col-xs-12 col-sm-9" role="tablist" ng-cloak>
-            <li role="presentation" ng-repeat="tab in tabs" ng-class="{active:isActive(tab.title)}" ng-click="setActive(tab)">
-                <a href="#">\{{tab.title}} <span class="badge">\{{(guests|filter:tab.filter).length}}</span></a>
-            </li>
-        </ul>
-        <div class="btn-group col-xs-6 col-sm-3" role="group">
-            <button type="button" class="btn btn-secondary" ng-click="groupFilter = {}">All</button>
-            <button type="button" class="btn btn-secondary" ng-click="groupFilter = {group: 'Liz'}">Bride</button>
-            <button type="button" class="btn btn-secondary" ng-click="groupFilter = {group: 'Michael'}">Groom</button>
-        </div>
-    </div>
-
-    <table class="table" ng-cloak>
-        <thead>
-        <tr>
-            <th class="col-xs-3">Name</th>
-            <th class="col-xs-3">Guests</th>
-            <th class="col-xs-1" ng-if="!attending()"># Invited</th>
-            <th class="col-xs-1" ng-if="attending()"># Attending</th>
-            <th class="col-xs-1">Guest?</th>
-            <th class="col-xs-2" ng-if="attending()">Guest Name</th>
-            <th class="col-xs-1" ng-if="!hasRsvpd()">RSVP Code</th>
-            <th class="col-xs-2" ng-if="hasRsvpd()">Message</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="guest in guests | filter: guestFilter | filter : groupFilter | orderBy: 'invitationName'">
-            <td class="col-xs-3">\{{guest.invitationName}}</td>
-            <td class="col-xs-3" ng-if="!attending()">\{{guest.namesInvited.join(", ")}}</td>
-            <td class="col-xs-3" ng-if="attending()">\{{guest.namesComing.join(", ")}}</td>
-            <td class="col-xs-1" ng-if="!attending()">\{{guest.numberInvited}}</td>
-            <td class="col-xs-1" ng-if="attending()">\{{guest.numberComing}}</td>
-            <td class="col-xs-1" ng-if="guest.guestAllowed">Yes</td>
-            <td class="col-xs-1" ng-if="!guest.guestAllowed">No</td>
-            <td class="col-xs-1" ng-if="attending()">\{{guest.guestName}}</td>
-            <td class="col-xs-1" ng-if="!hasRsvpd()">\{{guest.rsvpCode}}</td>
-            <td class="col-xs-1" ng-if="hasRsvpd()">\{{guest.message}}</td>
-            <td class="col-xs-1 text-right" ng-if="!hasRsvpd()">
-                <div class="btn-group" role="group">
-                    <button guest-form guest="guest" on-submit="updateGuest" submit-text="Update" class="btn btn-secondary"><span class="glyphicon glyphicon-pencil"></span></button>
-                    <button ng-click="deleteGuest(guest)" class="btn btn-secondary"><span class="glyphicon glyphicon-trash"></span></button>
+            <div class="guest-list__container">
+                <div class="guest-list"
+                     ng-repeat="guest in guests | filter: guestFilter | filter : groupFilter | orderBy: 'invitationName'">
+                    <h3 >\{{guest.invitationName}}</h3>
+                    <div class="row">
+                        <div ng-if="!attending()" class="col-xs-12 col-sm-8 col-md-12">
+                            <strong>Invited</strong>
+                            <p>\{{guest.namesInvited.join(", ")}}</p>
+                        </div>
+                        <div ng-if="attending()" class="col-xs-12 col-sm-8 col-md-12">
+                            <strong>Coming</strong>
+                            <p>\{{guest.namesComing.join(", ")}}<span ng-if="guest.guestName">, \{{guest.guestName}}</span></p>
+                        </div>
+                        <div ng-if="!attending()" class="col-xs-12 col-sm-4 col-md-4">
+                            <strong># Invited</strong>
+                            <p>\{{guest.numberInvited}}</p>
+                        </div>
+                        <div ng-if="attending()" class="col-xs-12 col-sm-4 col-md-4">
+                            <strong># Coming</strong>
+                            <p>\{{guest.numberComing}}/\{{guest.numberInvited}}</p>
+                        </div>
+                        <div ng-if="!hasRsvpd()" class="col-xs-12 col-sm-8 col-md-4">
+                            <strong>RSVP Code</strong>
+                            <p >\{{guest.rsvpCode}}</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <strong>+1</strong>
+                            <p ng-if="guest.guestAllowed">Yes</p>
+                            <p ng-if="!guest.guestAllowed">No</p>
+                        </div>
+                        <div ng-if="hasRsvpd() && guest.message" class="col-xs-12">
+                            <strong>A message for you</strong>
+                            <p>\{{guest.message}}</p>
+                        </div>
+                    </div>
+                    <p class="text-right" ng-if="!hasRsvpd()">
+                        <div class="btn-group" role="group">
+                            <button guest-form
+                                    guest="guest"
+                                    on-submit="updateGuest"
+                                    submit-text="Update"
+                                    class="btn btn-secondary">
+                                Edit
+                            </button>
+                            <button ng-click="deleteGuest(guest)"
+                                    class="btn btn-secondary">
+                                Delete
+                            </button>
+                        </div>
+                    </p>
                 </div>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+            </div>
 
-    <button class="btn btn-primary" guest-form on-submit="addGuest">Add a new Guest</button>
+
+            <button class="btn btn-primary" guest-form on-submit="addGuest">Add a new Guest</button>
+        </div>
+    </div>
+
 </div>

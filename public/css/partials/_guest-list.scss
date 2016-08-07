@@ -1,0 +1,24 @@
+$section-border: solid 1px $gray2 !default;
+$section-padding: 2em;
+
+.guest-list {
+    padding: $section-padding 0;
+    border-bottom: $section-border;
+
+    &:first-child {
+        border-top: $section-border;
+    }
+
+    &__sidebar {
+        background-color: $gray0;
+    }
+
+    &__container {
+        padding-top: $section-padding;
+        padding-bottom: $section-padding;
+    }
+
+    &__filter {
+        padding-bottom: $section-padding;
+    }
+}
