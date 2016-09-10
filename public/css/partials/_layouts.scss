@@ -1,0 +1,42 @@
+.story {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    background-color: $gray1;
+
+    &__img {
+        height: 20em;
+        width: 100%;
+        overflow: hidden;
+        order: 2;
+
+        @include media-breakpoint-up(md) {
+            height: auto;
+            width: 50%;
+        }
+
+        @include media-breakpoint-up(lg) {
+            margin: 0;
+        }
+    }
+
+    &__content {
+        width: 100%;
+
+        padding: $grid-gutter-width;
+        padding-bottom: 0;
+
+        @include media-breakpoint-up(md) {
+            width: 50%;
+        }
+    }
+
+    &:nth-child(2n) {
+        .story__img {
+            @include media-breakpoint-up(md) {
+                order: 0;
+            }
+        }
+    }
+}

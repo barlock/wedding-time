@@ -2,6 +2,10 @@
 $body-bg: $gray0;
 $body-color: $gray3;
 
+$enable-flex: true;
+
+$grid-gutter-width: 2em;
+
 $gray-dark:                 $gray4 !default;
 $gray:                      $gray3 !default;
 $gray-light:                $gray2 !default;
@@ -71,3 +75,5 @@ $btn-border-radius-lg:           $border-radius-lg !default;
 $btn-border-radius-sm:           $border-radius-sm !default;
 
 $input-btn-border-width: 2px !default;
+
+$font-family-typewriter: American Typewriter, Courier, "Courier New", monospace;
