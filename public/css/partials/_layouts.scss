@@ -1,3 +1,17 @@
+.hero {
+    @include make-col-ready(12);
+    @include make-col(12);
+
+    @include media-breakpoint-up(md) {
+        @include make-col(8);
+        @include make-col-offset(2);
+    }
+
+    @include media-breakpoint-up(lg) {
+        @include make-col(6);
+        @include make-col-offset(3);
+    }
+}
 .story {
     display: flex;
     flex-wrap: wrap;
@@ -39,4 +53,20 @@
             }
         }
     }
+}
+
+.party {
+    @include make-col-ready(12);
+    @include make-col(12);
+
+    &__main {
+        @include make-col-ready(12);
+        @include make-col(12);
+    }
+
+    &__member {
+        @include make-col-ready(12);
+        @include make-col(12);
+    }
+
 }
