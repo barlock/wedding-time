@@ -5,7 +5,8 @@ module.exports = function (router) {
         res.cookie("XSRF-TOKEN", res.locals._csrf);
 
         res.render("rsvp", {
-            title: "RSVP"
+            title: "RSVP",
+            layout: "guests"
         });
     });
 };

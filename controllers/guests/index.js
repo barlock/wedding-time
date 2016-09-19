@@ -10,7 +10,8 @@ module.exports = function (router) {
             res.cookie("XSRF-TOKEN", res.locals._csrf);
 
             res.render("guests", {
-                title: "Guests"
+                title: "Guests",
+                layout: "guests"
             });
         }
     );
