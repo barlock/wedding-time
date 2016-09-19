@@ -3,7 +3,7 @@
 module.exports = function (router) {
     router.get("/", function (req, res) {
         res.render("index", {
-            title: "Liz and Michael Barlock - Wedding"
+            title: "Liz and Michael Wedding"
         });
     });
 };
