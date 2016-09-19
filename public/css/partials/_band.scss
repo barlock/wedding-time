@@ -7,4 +7,11 @@ $band-padding: 6em;
     &--secondary {
         background-color: $gray1;
     }
+
+    &--venue {
+        background-image: url(https://res.cloudinary.com/barlock/image/upload/c_scale,co_rgb:fcfcfc,e_colorize:85,o_100,q_auto:low,w_1080/v1474250000/IMG_0100_ujr24c.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
 }

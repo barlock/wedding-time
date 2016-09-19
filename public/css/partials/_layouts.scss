@@ -62,9 +62,13 @@
     text-align: center;
 
     @include media-breakpoint-up(md) {
-        @include make-col(6);
+        @include make-col(5);
 
         text-align: left;
+
+        &:nth-child(2n) {
+            @include make-col-offset(1);
+        }
     }
 
     &__header {
@@ -116,22 +120,59 @@
     }
 }
 
-.details {
+.title {
+    @include make-col-ready();
+    @include make-col(12);
+
+    text-align: center;
+
+    @include media-breakpoint-up(lg) {
+        @include make-col(8);
+        @include make-col-offset(2);
+    }
+}
+
+.registry {
+    @include make-row();
+
+    &__store {
+        @include make-col-ready();
+        @include make-col(6);
+
+        @include media-breakpoint-up(sm) {
+            @include make-col(4);
+
+            &:nth-child(2n + 1) {
+                @include make-col-offset(2);
+            }
+        }
+
+        @include media-breakpoint-up(md) {
+            @include make-col(3);
+
+            &:nth-child(2n) {
+                @include make-col-offset(2);
+            }
+        }
+
+        @include media-breakpoint-up(lg) {
+            @include make-col(2);
+
+            &:nth-child(2n + 1) {
+                @include make-col-offset(3);
+            }
+        }
+
+        margin: 1em 0;
+    }
+}
+
+.ceremony {
     @include make-row();
 
     text-align: center;
 
-    &__title {
-        @include make-col-ready();
-        @include make-col(12);
-
-        @include media-breakpoint-up(lg) {
-            @include make-col(8);
-            @include make-col-offset(2);
-        }
-    }
-
-    &__info {
+    &__event {
         @include make-col-ready();
         @include make-col(12);
 
