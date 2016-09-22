@@ -74,6 +74,14 @@ $btn-border-radius:              $border-radius !default;
 $btn-border-radius-lg:           $border-radius-lg !default;
 $btn-border-radius-sm:           $border-radius-sm !default;
 
-$input-btn-border-width: 2px !default;
+$input-btn-border-width:         2px !default;
+$input-bg:                       $gray0 !default;
+
+$input-border-focus:             $teal2 !default;
+$input-box-shadow-focus:         $teal3 !default;
+
+$input-color-placeholder:        #999 !default;
 
 $font-family-typewriter: American Typewriter, Courier, "Courier New", monospace;
+
+$jumbotron-bg: transparentize($gray1, .4);
