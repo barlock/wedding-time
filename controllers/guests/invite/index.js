@@ -11,9 +11,12 @@ module.exports = function (router) {
             var query = req.query.rsvp ? {rsvpCode: req.query.rsvp} : {};
 
             Guest.find(query, function (err, guests) {
-                var attending = guests.filter(function(guest) {
-                    return guest.numberComing > 0
-                });
+                var attending = guests
+                    .map(function(guest) {
+                        guest.rsvpCode = guest.rsvpCode.toLocaleUpperCase();
+
+                        return guest;
+                    });
 
                 if (err) {
                     console.log(err);
@@ -21,6 +24,7 @@ module.exports = function (router) {
                 } else {
                     res.render("invite", {
                         title: "Invitations",
+                        layout: "invite",
                         guests: attending
                     });
                 }
