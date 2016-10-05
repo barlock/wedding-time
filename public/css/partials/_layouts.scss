@@ -193,3 +193,48 @@
         margin: 1em 0;
     }
 }
+
+.activity {
+    &__category {
+        @include make-col-ready();
+        @include make-col(12);
+    }
+
+    &__img {
+        width: 100%;
+        background-color: $white;
+    }
+
+    &__link {
+        color: inherit;
+
+        &:hover {
+            text-decoration: none;
+            color: inherit;
+
+            p {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__thing {
+        @include make-col-ready();
+        @include make-col(12);
+
+        padding-top: 1em;
+        padding-bottom: 1em;
+
+        @include media-breakpoint-up(sm) {
+            @include make-col(6);
+        }
+
+        @include media-breakpoint-up(md) {
+            @include make-col(4);
+        }
+
+        @include media-breakpoint-up(lg) {
+            @include make-col(3);
+        }
+    }
+}
