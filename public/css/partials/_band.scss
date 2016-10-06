@@ -1,5 +1,7 @@
 $band-padding: 6em;
 
+$band-mods: "c_scale,co_rgb:fcfcfc,e_colorize:85,o_100,q_auto:low,w_1080,fl_progressive";
+
 .band {
     padding-top: $band-padding;
     padding-bottom: $band-padding;
@@ -8,19 +10,18 @@ $band-padding: 6em;
         background-color: $gray1;
     }
 
-
     &--rsvp,
     &--venue {
-        background-image: url(https://res.cloudinary.com/barlock/image/upload/c_scale,co_rgb:fcfcfc,e_colorize:85,o_100,q_auto:low,w_1080,fl_progressive/v1474250000/IMG_0100_ujr24c.jpg);
+        background-image: url("https://res.cloudinary.com/barlock/image/upload/#{$band-mods}/v1474250000/IMG_0100_ujr24c.jpg");
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
     }
 
-    //&--rsvp {
-    //    background-image: url(https://res.cloudinary.com/barlock/image/upload/c_scale,co_rgb:fcfcfc,e_colorize:85,o_100,q_auto:low,w_1080,fl_progressive/v1474249997/IMG_0095_i2bm6k.jpg);
-    //    background-repeat: no-repeat;
-    //    background-position: center;
-    //    background-size: cover;
-    //}
+    &--hotel {
+        background-image: url("https://res.cloudinary.com/barlock/image/upload/#{$band-mods}/v1475712526/UNCwell_uwljpz.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
 }
