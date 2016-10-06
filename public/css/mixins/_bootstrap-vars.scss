@@ -82,7 +82,15 @@ $input-box-shadow-focus:         $teal3 !default;
 
 $input-color-placeholder:        #999 !default;
 
-$font-family-sans-serif: Verdana, Geneva, sans-serif !default;
-$font-family-serif: Palatino, Palatino Linotype, Palatino LT STD, Book Antiqua, Georgia, serif !default;
+
+$font-family-sans-serif: BG-reg, Century Gothic, CenturyGothic, AppleGothic, sans-serif !default;
+$font-family-serif: ET-reg, Baskerville, Baskerville Old Face, Hoefler Text, Garamond, Times New Roman, serif !default;
 
 $jumbotron-bg: transparentize($gray1, .4);
+
+$font-size-root: 18px !default;
+
+$font-size-base: 1rem !default;
+$font-size-lg:   1.25rem !default;
+$font-size-sm:   .8rem !default;
+$font-size-xs:   .64rem !default;

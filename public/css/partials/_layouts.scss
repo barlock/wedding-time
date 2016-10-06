@@ -17,10 +17,13 @@
     flex-wrap: wrap;
     align-items: center;
 
-    background-color: $gray1;
+    @include media-breakpoint-up(xl) {
+        @include make-container();
+        @include make-container-max-widths();
+    }
 
     &__img {
-        height: 20em;
+        height: 15em;
         width: 100%;
         overflow: hidden;
         order: 2;
