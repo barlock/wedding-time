@@ -27,7 +27,16 @@ options = {
 
 hbs = exphbs.create({
     extname: '.hbs',
-    defaultLayout: 'main'
+    defaultLayout: 'main',
+    helpers: {
+        group: function (index, opts) {
+            if (index % 2 === 0 && index !== 0) {
+                return opts.fn(this);
+            } else {
+                return opts.inverse(this);
+            }
+        }
+    }
 });
 
 app = module.exports = express();

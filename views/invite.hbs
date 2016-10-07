@@ -1,5 +1,23 @@
-{{#each guests as |guest|}}
-    <div class="invite">
-        {{> invitation}}
+<div class="invites">
+    <div class="invites__group">
+        {{#each guests as |guest|}}
+            {{#group @index}}
+            </div>
+            <div class="invites__group">
+            {{/group}}
+            <div class="invites__item">
+                {{> invitation}}
+            </div>
+
+
+        {{/each}}
     </div>
-{{/each}}
+</div>
+
+<!--<div class="invites">-->
+    <!--<h1>yup</h1>-->
+<!--</div>-->
+
+<!--<div class="invites">-->
+    <!--<h1>yup</h1>-->
+<!--</div>-->
