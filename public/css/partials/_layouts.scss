@@ -65,9 +65,15 @@
     text-align: center;
 
     @include media-breakpoint-up(md) {
-        @include make-col(5);
+        @include make-col(6);
 
         text-align: left;
+
+    }
+
+
+    @include media-breakpoint-up(lg) {
+        @include make-col(5);
 
         &:nth-child(2n) {
             @include make-col-offset(1);
