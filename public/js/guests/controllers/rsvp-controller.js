@@ -37,7 +37,7 @@ function RsvpController($scope, $window, GuestServices) {
         $scope.guest.numberComing = $scope.guest.namesComing.length + guestCount;
 
         GuestServices.update({id: $scope.guest._id}, $scope.guest, function () {
-            $window.location.href = '/accommodations';
+            $window.location.href = '/travel';
         });
     };
 }
