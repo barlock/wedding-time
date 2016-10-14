@@ -13,6 +13,10 @@ module.exports = function (router) {
             if (typeof value === 'string') {
                 guest[key] = value.trim();
             }
+
+            if (guest.rsvpCode) {
+                guest.rsvpCode = guest.rsvpCode.toLowerCase();
+            }
         });
 
         return guest;
@@ -22,7 +26,10 @@ module.exports = function (router) {
 
     // Get
     router.get('/', function (req, res) {
-        var query = req.query.rsvp ? {rsvpCode: req.query.rsvp} : {};
+        var query = req.query.rsvp ? {
+            rsvpCode: req.query.rsvp.trim().toLowerCase()
+        } : {};
+
         Guest.find(query, function (err, guests) {
             if (err) {
                 console.log(err);
