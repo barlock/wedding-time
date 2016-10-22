@@ -26,7 +26,6 @@
 
 $invite-height: 6in;
 $invite-width: 4in;
-$invite-space: .25in;
 
 body {
     margin: 0;
@@ -40,7 +39,6 @@ body {
 .invites {
     display: table;
     width: 100%;
-    border-spacing: .25in;
 
     &__group {
         display: table-row;
@@ -51,6 +49,7 @@ body {
         display: table-cell;
 
         svg {
+            display: block;
             width: $invite-width;
             height: $invite-height;
         }
