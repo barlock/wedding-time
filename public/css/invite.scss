@@ -1,3 +1,5 @@
+@import "partials/_angular.scss";
+
 @font-face {
     font-family: "ET-reg";
     src: url("/fonts/ET-reg.woff2") format('woff2'),
@@ -31,6 +33,9 @@ body {
     padding: 0;
 }
 
+.rsvp-code {
+    text-transform: uppercase;
+}
 
 .invites {
     display: table;

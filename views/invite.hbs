@@ -1,23 +1,7 @@
-<div class="invites">
-    <div class="invites__group">
-        {{#each guests as |guest|}}
-            {{#group @index}}
-            </div>
-            <div class="invites__group">
-            {{/group}}
-            <div class="invites__item">
-                {{> invitation}}
-            </div>
-
-
-        {{/each}}
+<div ng-cloak class="invites" ng-controller="weddingTime.guests.GuestListController">
+    <div class="invites__group" ng-repeat="guests in guestTable">
+        <div class="invites__item" ng-repeat="guest in guests">
+            {{> invitation}}
+        </div>
     </div>
 </div>
-
-<!--<div class="invites">-->
-    <!--<h1>yup</h1>-->
-<!--</div>-->
-
-<!--<div class="invites">-->
-    <!--<h1>yup</h1>-->
-<!--</div>-->

@@ -2,6 +2,7 @@
 
 function GuestListController($scope, GuestServices) {
     $scope.guests = [];
+    $scope.guestTable = [];
     $scope.alerts = [];
     $scope.guestFilter = {};
     $scope.groupFilter = {};
@@ -131,7 +132,20 @@ function GuestListController($scope, GuestServices) {
         return $scope.isActive('Attending');
     };
 
-    $scope.guests = GuestServices.query();
+    GuestServices.query(null, function(guests) {
+        $scope.guests = guests;
+        $scope.guestTable = guests
+            .reduce(function(table, guest, index) {
+                if (index % 2 === 0) {
+                    table.push([ guest ]);
+                } else {
+                    table[table.length - 1].push(guest);
+                }
+
+                return table;
+            }, []);
+    });
+
     $scope.activeTab = 'All';
     $scope.tabs = [{
         title: 'All',
