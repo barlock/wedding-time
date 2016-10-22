@@ -2,7 +2,7 @@
 
 
 require('angular');
-require('angular-bootstrap-npm');
+require('angular-bootstrap');
 require('angular-resource');
 require('angular-cookies');
 
