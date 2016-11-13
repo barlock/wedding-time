@@ -22,7 +22,6 @@ module.exports = function (router) {
         return guest;
     }
 
-    router.use(passport.authenticate('basic'));
 
     // Get
     router.get('/', function (req, res) {
@@ -44,6 +43,24 @@ module.exports = function (router) {
         });
     });
 
+    // Update
+    router.put('/:id', function (req, res) {
+        var id = req.params.id;
+
+        Guest.findOneAndUpdate({_id: id}, getGuest(req.body),
+            function (err) {
+                if (err) {
+                    console.log(err);
+                    res.send(500, err);
+                } else {
+                    res.sendStatus(200);
+                }
+            }
+        );
+    });
+
+    router.use(passport.authenticate('basic'));
+
     // Create
     router.post('/', function (req, res) {
         //Retrieve data
@@ -61,22 +78,6 @@ module.exports = function (router) {
                 res.status(200).json({id: guest._id});
             }
         });
-    });
-
-    // Update
-    router.put('/:id', function (req, res) {
-        var id = req.params.id;
-
-        Guest.findOneAndUpdate({_id: id}, getGuest(req.body),
-            function (err) {
-                if (err) {
-                    console.log(err);
-                    res.send(500, err);
-                } else {
-                    res.sendStatus(200);
-                }
-            }
-        );
     });
 
     // Delete
