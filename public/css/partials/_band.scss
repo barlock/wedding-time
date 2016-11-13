@@ -2,6 +2,13 @@ $band-padding: 6em;
 
 $band-mods: "c_scale,co_rgb:fcfcfc,e_colorize:85,o_100,q_auto:low,w_1080,fl_progressive";
 
+@mixin image-band($url) {
+    background-image: url("https://res.cloudinary.com/barlock/image/upload/#{$band-mods}/#{$url}");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
 .band {
     padding-top: $band-padding;
     padding-bottom: $band-padding;
@@ -12,16 +19,14 @@ $band-mods: "c_scale,co_rgb:fcfcfc,e_colorize:85,o_100,q_auto:low,w_1080,fl_prog
 
     &--rsvp,
     &--venue {
-        background-image: url("https://res.cloudinary.com/barlock/image/upload/#{$band-mods}/v1474250000/IMG_0100_ujr24c.jpg");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
+        @include image-band("v1474250000/IMG_0100_ujr24c.jpg");
     }
 
     &--hotel {
-        background-image: url("https://res.cloudinary.com/barlock/image/upload/#{$band-mods}/v1475712526/UNCwell_uwljpz.jpg");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
+        @include image-band("v1475712526/UNCwell_uwljpz.jpg");
+    }
+
+    &--about {
+        @include image-band("v1473543642/sunset_pwggdd.jpg");
     }
 }
