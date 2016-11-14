@@ -9,9 +9,16 @@ function RsvpController($scope, $window, GuestServices) {
         GuestServices.get({rsvp: rsvpCode}, function (guest) {
             $scope.guest = angular.copy(guest);
 
-            angular.forEach(guest.namesInvited, function (name) {
-                $scope.attending[name] = true;
-            });
+            if (guest.rsvpd) {
+                angular.forEach(guest.namesComing, function (name) {
+                    $scope.attending[name] = true;
+                });
+            } else {
+                angular.forEach(guest.namesInvited, function (name) {
+                    $scope.attending[name] = true;
+                });
+            }
+
 
             $scope.attempts++;
         });
@@ -36,8 +43,12 @@ function RsvpController($scope, $window, GuestServices) {
 
         $scope.guest.numberComing = $scope.guest.namesComing.length + guestCount;
 
+        $scope.guest.coming = $scope.guest.numberComing > 0;
+
+        console.log($scope.guest)
+
         GuestServices.update({id: $scope.guest._id}, $scope.guest, function () {
-            $window.location.href = '/travel';
+            $scope.success = true;
         });
     };
 }

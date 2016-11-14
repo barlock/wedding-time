@@ -1,8 +1,8 @@
 <div class="band band--rsvp" ng-controller="weddingTime.guests.RsvpController" >
     <div class="container">
-        <div class="row">
+        <div class="row" ng-hide="success">
             <div class="jumbotron" ng-hide="guest.invitationName" ng-show="attempts">
-                <h1>Join us on our special day</h1>
+                <h2>Join us on our special day</h2>
                 <p>Check your invitation for your unique RSVP code and enter it below to rsvp.</p>
                 <div class="row">
                     <div class="col-xs-12 col-md-8">
@@ -20,10 +20,19 @@
             <div class="jumbotron" ng-show="guest.invitationName" ng-cloak>
                 <form name="rsvpForm" role="form" class="form">
                     <div class="form-group">
-                        <label class="control-label">You're Invited! Check everyone who plans to attend.</label>
+                        <label class="control-label">
+                            <span ng-if="guest.rsvpd">
+                                We've already received your RSVP! If you want to change your RSVP, go ahead. Check everyone who plans to attend.
+                            </span>
+                            <span ng-if="!guest.rsvpd">
+                                You're Invited! Check everyone who plans to attend.
+                            </span>
+                        </label>
                         <div class="checkbox">
                             <div ng-repeat="name in guest.namesInvited">
-                                <label><input class="checkbox" type="checkbox" ng-model="attending[name]">\{{name}}</label>
+                                <label><input class="checkbox" type="checkbox"
+                                              ng-checked="attending[name]"
+                                              ng-model="attending[name]">\{{name}}</label>
                             </div>
                         </div>
                     </div>
@@ -52,6 +61,22 @@
 
                 Having trouble or the information doesn't look right? <a class="a--em" href="mailto:edurham215@gmail.com?subject=Wedding%20RSVP">Shoot us an email.</a><br>
                 <a href="#" class="a--em" ng-click="giveUp()">Not you? Re-enter your code.</a>
+            </div>
+        </div>
+        <div class="row" ng-show="success" ng-cloak>
+            <div class="jumbotron" >
+                <h2>Thanks for your RSVP!</h2>
+                <p ng-show="guest.coming">
+                    We're looking forward to seeing you! If you're traveling from out of town, we have
+                    group rates for a <a class="a--em" href="/travel">few hotels</a>. Otherwise, you can check out some of
+                    some of our <a class="a--em" href="/travel#activities">favorite places</a> in Chapel Hill or
+                    <a class="a--em" href="/about">read about how we met</a>.
+                </p>
+                <p ng-show="!guest.coming">
+                    We're sorry you can't make it! If anything changes and you can make it after all, please use the same code to
+                    <a class="a--em" href="/rsvp">RSVP again</a>. If it's after April 1st, please
+                    <a class="a--em" href="mailto:edurham215@gmail.com?subject=Wedding%20RSVP%20Change">shoot us an email.</a>
+                </p>
             </div>
         </div>
     </div>
