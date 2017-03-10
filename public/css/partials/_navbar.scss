@@ -1,3 +1,23 @@
+.navbar {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-nav {
+    flex-direction: row;
+
+    .nav-link {
+        padding-right: .5rem;
+        padding-left: .5rem;
+    }
+
+    .nav-button {
+        margin-left: 1rem;
+    }
+}
+
 .navbar-brand {
     line-height: 0;
 
